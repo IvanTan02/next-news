@@ -1,16 +1,18 @@
-import NewsItem from "@/components/news/news-item";
-import Link from "next/link";
-import { DUMMY_NEWS } from "@/dummy-news";
-import NewsList from "@/components/news/news-list";
 
-export default function NewsPage() {
+import NewsList from "@/components/news/news-list";
+import { getAllNews } from "@/lib/news";
+
+export default async function NewsPage() {
+
+  const news = await getAllNews();
+
   return (
     <>
       <header>
         <h1>News Page</h1>
       </header>
       <main>
-        <NewsList news={DUMMY_NEWS} />
+        <NewsList news={news} />
       </main>
     </>
   )
